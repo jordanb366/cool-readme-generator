@@ -1,6 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer")
 const fs = require("fs");
+const { generateMarkdown, renderLicenseBadge, renderLicenseLink, renderLicenseSection} = require("./utils/generateMarkdown.js");
+
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -37,7 +39,7 @@ const questions = [
         type: "list",
         name: "licenses",
         message: "Which license applies?",
-        choices: ["Option1", "Option2", "Option3", "Option4" ],
+        choices: ["Apache License 2.0", "GNU General Public License v3.0", "MIT License", "None" ],
     },
     {
         type: "input",
@@ -56,34 +58,17 @@ function userInput(){
     .prompt(questions)
     .then((data) => {
             const filename = data.title;
-            const readMeFormat = `Title: ${data.title}
-            ======================
-            Description
-            ${data.description}
-            =====================
-            Table of Contents
-            =====================
-            Installation
-            ${data.instructions}
-            =====================
-            Usage
-            ${data.usage}
-            =====================
-            License
-            ${data.licenses}
-            =====================
-            Contributing
-            ${data.contribution}
-            ======================
-            Tests
-            ${data.test}
-            =====================
-            Questions
-            Send any questions to ${data.email}
-            ===================== `
-
-            writeToFile(filename, readMeFormat);
             
+            const license = data.licenses;
+            
+            
+            generateMarkdown(data);
+            const format = generateMarkdown(data);
+
+            
+            writeToFile(filename, format);
+            
+            renderLicenseBadge(license);
         });
    
 }
@@ -95,9 +80,8 @@ function userInput(){
 // const {writeToFile} = require("./utils/generateFile.js")
 function writeToFile(filename, data) {
         // TODO: Create a file in the output folder
-        console.log(data.title);
     fs.writeFile(`./output/${filename}.md`, data, (err) =>
-    err ? console.log(err) : console.log('Success!')
+    err ? console.log(err) : console.log('Your ReadMe was created!')
 );
 }
 
