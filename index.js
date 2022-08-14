@@ -1,99 +1,39 @@
-// TODO: Include packages needed for this application
+// Required packages for application
 const inquirer = require("inquirer")
-const fs = require("fs");
-const { generateMarkdown, renderLicenseBadge, renderLicenseLink, renderLicenseSection} = require("./utils/generateMarkdown.js");
 
-// TODO: Create an array of questions for user input
-const questions = [
-    {
-        type: "input",
-        name: "title",
-        message: "What is the title for this project?",
-    },
-    {
-        type: "input",
-        name: "description",
-        message: "Description of this project...",
-    },
-    {
-        type: "input",
-        name: "instructions",
-        message: "What are the installation instructions",
-    },
-    {
-        type: "input",
-        name: "usage",
-        message: "What is the usage of this project?",
-    },
-    {
-        type: "input",
-        name: "contribution",
-        message: "What are the contribution guidelines for this project?",
-    },
-    {
-        type: "input",
-        name: "test",
-        message: "What are the test instructions?",
-    },
-    {
-        type: "list",
-        name: "licenses",
-        message: "Which license applies?",
-        choices: ["Apache License 2.0", "GNU General Public License v3.0", "MIT License", "None" ],
-    },
-    {
-        type: "input",
-        name: "github",
-        message: "What is your GitHub username?",
-    },
-    {
-        type: "input",
-        name: "email",
-        message: "What is your email address?",
-    },
-];
-// const questions = require("./utils/questions.js");
+// Gets the functions from the "generateMarkdown.js file"
+const { generateMarkdown, renderLicenseBadge, renderLicenseLink, renderLicenseSection} = require("./utils/generateMarkdown.js");
+// Gets the questions array from the "Questions.js" file
+const questions = require("./utils/questions.js");
+// Gets the writeToFile function from the generateFile.js file
+const {writeToFile} = require("./utils/generateFile.js")
+
+// Function that runs the userInput and inquirer
 function userInput(){
+    // Runs inquirer
     inquirer
+    // Prompts the users the questions from the "Questions array"
     .prompt(questions)
+    // Gets the data from the users inputs
     .then((data) => {
+        // Grabs the title and saves filename to a variable
             const filename = data.title;
-            
+        // Grabs the license selected and saves to a variable
             const license = data.licenses;
             
-            
+        // Passes data as parameter to the generateMarkdown file
             generateMarkdown(data);
             const format = generateMarkdown(data);
 
             
             writeToFile(filename, format);
-            
+        // Passes the license variable as a paramter to the renderLicenseBadge function
             renderLicenseBadge(license);
-        });
-   
+        });   
 }
 
-
-
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-// const {writeToFile} = require("./utils/generateFile.js")
-function writeToFile(filename, data) {
-        // TODO: Create a file in the output folder
-    fs.writeFile(`./output/${filename}.md`, data, (err) =>
-    err ? console.log(err) : console.log('Your ReadMe was created!')
-);
-}
-
-// TODO: Create a function to initialize app
+// Intializes the app
 function init() {
-    // inquirer
-    // .prompt (questions)
-    // .then((data) => {
-    //     // writeToFile(`${data.name}`);
-    //     writeToFile;
-        
-    // });
   userInput();
  
 }

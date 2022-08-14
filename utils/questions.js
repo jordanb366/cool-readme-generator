@@ -1,3 +1,4 @@
+// Questions array for users to answer
 const questions = [
     {
         type: "input",
@@ -33,7 +34,7 @@ const questions = [
         type: "list",
         name: "licenses",
         message: "Which license applies?",
-        choices: ["Option1", "Option2", "Option3", "Option4" ],
+        choices: ["Apache License 2.0", "GNU General Public License v3.0", "MIT License", "None" ],
     },
     {
         type: "input",
@@ -45,12 +46,7 @@ const questions = [
         name: "email",
         message: "What is your email address?",
     },
-]
+];
 
-
-
-// -test instructions
-// -license - choices
-// -Github username
-// -email address
+// Exports the questions array
 module.exports = questions;

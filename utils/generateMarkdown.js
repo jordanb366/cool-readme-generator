@@ -51,4 +51,5 @@ function generateMarkdown(data) {
 `;
 }
 
+// Exports each function in the generateMarkdown.js File
 module.exports = {generateMarkdown, renderLicenseBadge, renderLicenseLink, renderLicenseSection};
