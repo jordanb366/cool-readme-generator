@@ -19,7 +19,7 @@ function userInput(){
         // Grabs the title and saves filename to a variable
             const filename = data.title;
         // Grabs the license selected and saves to a variable
-            const license = data.licenses;
+            const license = data.license;
             renderLicenseBadge(license);
              renderLicenseLink(license);
              renderLicenseSection(license);

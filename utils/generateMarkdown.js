@@ -71,7 +71,7 @@ function generateMarkdown(data) {
   
   ## License
 
-  ${renderLicenseSection()}
+  ${renderLicenseSection(data.license)}
 
   
   ## Contributing
@@ -82,6 +82,8 @@ function generateMarkdown(data) {
   
   ## Questions
   * Github Profile: [${data.github}](https://github.com/${data.github})
+
+ * ![Badge](https://img.shields.io/github/last-commit/${data.github}/${data.repository})
   * Send any questions to ${data.email}
 `;
 }
