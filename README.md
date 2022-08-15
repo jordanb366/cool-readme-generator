@@ -8,6 +8,11 @@ Using node.js and inquirer, this app allows users to generate a very cool readme
 
 # Screenshot(s)
 
+![Screenshot 1](./docs/Screenshot1.png)
+![Screenshot 2](./docs/Screenshot2.png)
+
 # Link to sample readme
+
+[Link to sampel readme](https://github.com/jordanb366/cool-readme-generator/blob/main/sample/sampleReadme.md)
 
 

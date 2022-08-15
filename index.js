@@ -28,7 +28,7 @@ function userInput(){
             generateMarkdown(data)
             const format = generateMarkdown(data);
 
-            
+            // Passes filename and format to function write to file
             writeToFile(filename, format);
         
         });   
