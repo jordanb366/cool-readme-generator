@@ -32,7 +32,7 @@ const questions = [
     },
     {
         type: "list",
-        name: "licenses",
+        name: "license",
         message: "Which license applies?",
         choices: ["Apache License 2.0", "GNU General Public License v3.0", "MIT License", "None" ],
     },

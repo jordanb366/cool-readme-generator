@@ -2,7 +2,7 @@
 const inquirer = require("inquirer")
 
 // Gets the functions from the "generateMarkdown.js file"
-const { generateMarkdown, renderLicenseBadge, renderLicenseLink, renderLicenseSection} = require("./utils/generateMarkdown.js");
+const {generateMarkdown, renderLicenseBadge, renderLicenseLink, renderLicenseSection} = require("./utils/generateMarkdown.js");
 // Gets the questions array from the "Questions.js" file
 const questions = require("./utils/questions.js");
 // Gets the writeToFile function from the generateFile.js file
@@ -20,15 +20,17 @@ function userInput(){
             const filename = data.title;
         // Grabs the license selected and saves to a variable
             const license = data.licenses;
+            renderLicenseBadge(license);
+             renderLicenseLink(license);
+             renderLicenseSection(license);
             
         // Passes data as parameter to the generateMarkdown file
-            generateMarkdown(data);
+            generateMarkdown(data)
             const format = generateMarkdown(data);
 
             
             writeToFile(filename, format);
-        // Passes the license variable as a paramter to the renderLicenseBadge function
-            renderLicenseBadge(license);
+        
         });   
 }
 
