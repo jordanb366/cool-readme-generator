@@ -11,7 +11,7 @@ function renderLicenseBadge(license) {
   } else if (license == "MIT License") {
     return  `![MIT License](https://img.shields.io/badge/license-MIT-blue)`;
   }
- console.log(license);
+ 
 }
 
 
@@ -28,7 +28,7 @@ function renderLicenseLink(license) {
    } else if (license == "MIT License") {
      return  `[MIT License](https://opensource.org/licenses/MIT)`;
    }
-   console.log(license);
+   
 }
 
 
@@ -56,7 +56,7 @@ function generateMarkdown(data) {
   1. [Title](#title)
   2. [Description](#description)
   3. [Installation](#installation)
-  4. [Usuage](#usage)
+  4. [Usage](#usage)
   5. [License](#license)
   6. [Contributing](#contributing)
   7. [Test instructions](#test-instructions)
